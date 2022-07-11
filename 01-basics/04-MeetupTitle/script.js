@@ -17,6 +17,7 @@ function fetchMeetupById(meetupId) {
 const vm = createApp({
   data() {
     return {
+      meetup: null,
       meetupId: 0,
       meetupTitle: '',
     };
@@ -24,14 +25,9 @@ const vm = createApp({
 
   watch: {
     meetupId(meetupId) {
-      const meetup = fetchMeetupById(meetupId);
-
-      const addTitle = async () => {
-        const meetupData = await meetup;
-        this.meetupTitle = meetupData.title;
-      };
-
-      addTitle();
+      fetchMeetupById(meetupId).then((metup) => {
+        this.meetupTitle = metup.title;
+      });
     },
   },
 }).mount('#app');
