@@ -1,7 +1,7 @@
 import { createApp } from './vendor/vue.esm-browser.js';
 
 // From https://jsonplaceholder.typicode.com/comments
-const emails = [
+const emails2 = [
   'Eliseo@gardner.biz',
   'Jayne_Kuhic@sydney.com',
   'Nikita@garfield.biz',
@@ -32,22 +32,15 @@ const emails = [
 const vm = createApp({
   data() {
     return {
-      emails: (function (em = emails) {
-        return em.map(function (email) {
-          return {
-            name: email,
-            class: '',
-          };
-        });
-      })(),
       search: '',
     };
   },
 
-  watch: {
-    search(newValue) {
-      this.emails = this.emails.map(function (email) {
-        if (newValue.length > 0 && email.name.toLowerCase().indexOf(newValue.toLowerCase()) > -1) {
+  computed: {
+    emails() {
+      let search = this.search.toLowerCase();
+      return this.search.length > 0 ? this.emails.map(function (email) {
+        if (email.name.toLowerCase().indexOf(search) > -1) {
           return {
             name: email.name,
             class: 'marked',
@@ -58,6 +51,11 @@ const vm = createApp({
             class: '',
           };
         }
+      }) : emails2.map((email) => {
+        return {
+          name: email,
+          class: '',
+        };
       });
     },
   },
