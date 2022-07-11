@@ -6,45 +6,25 @@ const vm = createApp({
       operator: '',
       x: 0,
       y: 0,
-      z: 0,
     };
   },
 
-  watch: {
-    x() {
-      this.calc();
-    },
-
-    y() {
-      this.calc();
-    },
-
-    operator() {
-      this.calc();
-    },
-  },
-
-  methods: {
-    calc() {
+  computed: {
+    z() {
       switch (this.operator) {
         case 'sum':
-          this.z = this.x + this.y;
-          break;
+          return this.x + this.y;
         case 'subtract':
-          this.z = this.x - this.y;
-          break;
+          return  this.x - this.y;
         case 'multiply':
-          this.z = this.x * this.y;
-          break;
+          return this.x * this.y;
         case 'divide':
-          this.z = this.x / this.y;
-          break;
+          return this.x / this.y;
         default:
-          this.z = 0;
-          break;
+          return 0;
       }
     },
-  },
+  }
 }).mount('#app');
 
 // Создайте Vue приложение
