@@ -15,7 +15,7 @@ const vm = createApp({
         case 'sum':
           return this.x + this.y;
         case 'subtract':
-          return  this.x - this.y;
+          return this.x - this.y;
         case 'multiply':
           return this.x * this.y;
         case 'divide':
@@ -24,7 +24,7 @@ const vm = createApp({
           return 0;
       }
     },
-  }
+  },
 }).mount('#app');
 
 // Создайте Vue приложение
