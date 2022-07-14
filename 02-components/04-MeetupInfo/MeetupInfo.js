@@ -12,13 +12,26 @@ export default defineComponent({
     place: {
       type: String,
       required: true,
-    }
+    },
+
+    date: {
+      type: Number,
+      required: true,
+    },
   },
 
   methods: {
     formatAsLocalDate(timestamp){
-      return new Date()
+      return new Date(timestamp).toLocaleString(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
     },
+
+    formatAsIsoDate(timestamp) {
+      return new Date(timestamp).toISOString().split('T')[0]
+    }
   },
 
   template: `
@@ -33,7 +46,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time datetime="2020-01-01">1 янв. 2020</time>
+        <time :datetime="formatAsIsoDate(date)">{{ formatAsLocalDate(date) }}</time>
       </li>
     </ul>`,
 });

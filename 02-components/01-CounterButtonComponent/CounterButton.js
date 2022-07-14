@@ -15,8 +15,7 @@ export default defineComponent({
 
   methods: {
     inc(value) {
-      value += 1;
-      this.$emit('update:count', value);
+      this.$emit('update:count', value + 1);
     }
   },
   // Шаблон потребуется отредактировать
