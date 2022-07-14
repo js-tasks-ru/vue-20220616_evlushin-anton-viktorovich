@@ -21,7 +21,7 @@ describe('components/MeetupCover', () => {
 
     it('MeetupCover не должен удалять изображение по умолчанию при отсутствии ссылки на изображение', () => {
       const wrapper = shallowMount(MeetupCover);
-      expect(wrapper.find('.meetup-cover').attributes('style') ?? '').toContain('--bg-url');
+      expect(wrapper.find('.meetup-cover').attributes('style') ?? '').not.toContain('--bg-url');
     });
 
     it('MeetupCover должен выводить новое название митапа из параметра title при обновлении входного параметра', async () => {
