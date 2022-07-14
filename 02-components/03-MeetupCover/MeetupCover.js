@@ -10,7 +10,6 @@ export default defineComponent({
     },
 
     image: {
-      type: String,
       default: 'https://course-vue.javascript.ru/api/images/2',
     }
   },
