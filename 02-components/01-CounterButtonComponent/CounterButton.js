@@ -1,4 +1,4 @@
-import {defineComponent} from './vendor/vue.esm-browser.js';
+import { defineComponent } from './vendor/vue.esm-browser.js';
 
 export default defineComponent({
   name: 'CounterButton',
@@ -8,7 +8,7 @@ export default defineComponent({
     count: {
       type: Number,
       default: 0,
-    }
+    },
   },
   // Шаблон лучше держать максимально простым, а логику выносить в методы
   emits: ['update:count'],
@@ -16,7 +16,7 @@ export default defineComponent({
   methods: {
     inc(value) {
       this.$emit('update:count', value + 1);
-    }
+    },
   },
   // Шаблон потребуется отредактировать
   template: `
