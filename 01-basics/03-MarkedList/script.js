@@ -39,24 +39,26 @@ const vm = createApp({
   computed: {
     emails() {
       let search = this.search.toLowerCase();
-      return this.search.length > 0 ? this.emails.map(function (email) {
-        if (email.name.toLowerCase().indexOf(search) > -1) {
-          return {
-            name: email.name,
-            class: 'marked',
-          };
-        } else {
-          return {
-            name: email.name,
-            class: '',
-          };
-        }
-      }) : emails2.map((email) => {
-        return {
-          name: email,
-          class: '',
-        };
-      });
+      return this.search.length > 0
+        ? this.emails.map(function (email) {
+            if (email.name.toLowerCase().indexOf(search) > -1) {
+              return {
+                name: email.name,
+                class: 'marked',
+              };
+            } else {
+              return {
+                name: email.name,
+                class: '',
+              };
+            }
+          })
+        : emails2.map((email) => {
+            return {
+              name: email,
+              class: '',
+            };
+          });
     },
   },
 }).mount('#app');
